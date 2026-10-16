@@ -40,7 +40,6 @@ public class Notification {
     @Column(name = "body_html", nullable = false, columnDefinition = "text")
     private String bodyHtml;
 
-    // AJUSTE CRÍTICO AQUI! Remova o columnDefinition
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, length = 30)
     private NotificationStatus status;

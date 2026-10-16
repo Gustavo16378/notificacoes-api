@@ -104,7 +104,24 @@ SPRING_MAIL_PASSWORD=sua-senha-de-app
 SPRING_MAIL_FROM=seu-email@gmail.com
 ```
 
-No Gmail, use uma [senha de app](https://myaccount.google.com/apppasswords) em vez da senha da conta.
+No Gmail, use uma [senha de app](https://myaccount.google.com/apppasswords) em vez da senha da conta. No Docker Compose, essas variáveis são repassadas para o container a partir do seu shell ou de um arquivo `.env` local (ignorado pelo git).
+
+### Variáveis de ambiente
+
+Banco e RabbitMQ também são lidos do ambiente. Sem nada definido, a aplicação usa os valores de desenvolvimento local.
+
+| Variável | Padrão local |
+|---|---|
+| `SPRING_DATASOURCE_URL` | `jdbc:postgresql://localhost:5433/notification_api` |
+| `SPRING_DATASOURCE_USERNAME` | `postgres` |
+| `SPRING_DATASOURCE_PASSWORD` | senha do banco de desenvolvimento |
+| `SPRING_RABBITMQ_HOST` | `localhost` |
+| `SPRING_RABBITMQ_PORT` | `5672` |
+| `SPRING_RABBITMQ_USERNAME` | `guest` |
+| `SPRING_RABBITMQ_PASSWORD` | `guest` |
+| `SPRING_MAIL_USERNAME` | vazio |
+| `SPRING_MAIL_PASSWORD` | vazio |
+| `SPRING_MAIL_FROM` | vazio |
 
 ## Estrutura
 

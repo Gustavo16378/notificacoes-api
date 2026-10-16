@@ -1,5 +1,7 @@
 package com.orcamento.notification.messaging;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,6 +15,8 @@ import com.orcamento.notification.service.EmailNotificationService;
 @Component
 public class NotificationConsumer {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(NotificationConsumer.class);
+
     @Autowired
     private NotificationRepository notificationRepository;
 
@@ -21,20 +25,7 @@ public class NotificationConsumer {
 
     @RabbitListener(queues = "notifications")
     public void receive(NotificationEventDTO event) {
-        System.out.println("Mensagem recebida do RabbitMQ: " + event);
-
-        // Se quiser montar o HTML aqui:
-        // String bodyHtml;
-        // if (event.getTemplateType() != null) {
-        //     String templateFile = "templates/" + event.getTemplateType().toLowerCase() + ".html";
-        //     bodyHtml = TemplateUtils.processTemplate(
-        //         templateFile,
-        //         event.getRecipientName(),
-        //         ...
-        //     );
-        // } else {
-        //     bodyHtml = event.getBodyHtml();
-        // }
+        LOGGER.info("Evento recebido do RabbitMQ para o orçamento {}", event.getExternalReferenceId());
 
         Notification notification = new Notification();
         notification.setExternalReferenceId(event.getExternalReferenceId());

@@ -9,7 +9,7 @@ public class NotificationEventDTO {
     private String recipientName;
     private String subject;
     private String bodyHtml;
-    private String templateType; // NOVO CAMPO
+    private String templateType;
 
     public NotificationEventDTO() {
     }
@@ -24,7 +24,6 @@ public class NotificationEventDTO {
         this.templateType = templateType;
     }
 
-    // Getters/setters...
     public UUID getExternalReferenceId() {
         return externalReferenceId;
     }
